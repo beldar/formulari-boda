@@ -1,0 +1,168 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <title>boda nlform</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+
+    <div id="outer">
+      <div class="container">
+        <div id="content" class="col-xs-12 clearfix"></div>
+      </div>
+    </div>
+
+    <script id="intro-template" type="text/template">
+      <div id="intro" class="nl-form">
+        <h1>Benvingut/da!</h1>
+
+        <p>Si has arribat aquí significa que has estat convidat a la boda de l&rsquo;Anna i el Martí, aquesta és la "primera fase" de la nostra web que farem servir per fer-te algunes preguntes de cara a la teva assistència.</p>
+        <div class="nl-submit-wrap">
+          <button class="nl-submit" type="button">Començar</button>
+        </div>
+      </div>
+    </script>
+
+    <script id="form-1-template" type="text/template">
+      <form id="nl-form" class="nl-form">
+        Em dic
+        <input class="mdl" name="name" type="text" value="" placeholder="Nom" data-subline="El teu nom"/>
+        <input class="mdl" name="surname" type="text" value="" placeholder="Cognom" data-subline="Només el primer cognom"/>
+        , confirmo que
+        <select class="mdl" name="rsvp">
+          <option value="yes" selected>puc</option>
+          <option value="no">no puc</option>
+        </select>
+        venir a la vostra boda el dia 1 d&rsquo;Octubre de 2016 i el meu email és:
+        <input class="mdl" name="email" type="text" value="" placeholder="usuari@domini.com" data-subline="Per contactar-te sobre la boda"/>
+        <div class="nl-submit-wrap">
+          <button class="nl-submit" type="button">Següent</button>
+        </div>
+        <div class="nl-overlay"></div>
+      </form>
+    </script>
+
+    <script id="form-2-template" type="text/template">
+      <form id="nl-form" class="nl-form">
+        La celebració serà al restaurant <a title="Web del Btakora" href="http://www.btakora.com/" target="_blank">Btakora</a> a <a title="Google Maps" href="https://goo.gl/maps/e1cju" target="_blank">Canet de Mar</a>.<br/>
+        M&rsquo;agradaria poder arribar-hi amb
+        <select class="mdl" name="transport-in">
+          <option value="car" selected>cotxe</option>
+          <option value="bus">autocar</option>
+          <option value="boat">vaixell</option>
+        </select>.
+        <div class="nl-submit-wrap">
+          <button class="nl-submit" type="button">Següent</button>
+        </div>
+        <div class="nl-overlay"></div>
+      </form>
+    </script>
+
+    <script id="form-3-template" type="text/template">
+      <form id="nl-form" class="nl-form">
+        En quant al menjar, us vull informar, que el sushi
+        <select class="mdl" name="sushi">
+          <option value="yes" selected>m&rsquo;agrada molt</option>
+          <option value="maybe">ni fu ni fa</option>
+          <option value="no">no m&rsquo;agrada gens</option>
+        </select>,
+        i
+        <select class="mdl" name="alergies">
+          <option value="no" selected>no tinc</option>
+          <option value="yes">que tinc</option>
+        </select>
+        alèrgies alimentàries.
+
+        <div class="nl-submit-wrap">
+          <button class="nl-submit" type="button">Següent</button>
+        </div>
+        <div class="nl-overlay"></div>
+      </form>
+    </script>
+
+    <script id="form-4-template" type="text/template">
+      <form id="nl-form" class="nl-form">
+        De cara a la festa vull poder beure
+        <select class="mdl" name="copes">
+          <option value="0" selected>cap</option>
+          <option value="1">una</option>
+          <option value="2">dues</option>
+          <option value="3">tres</option>
+          <option value="4">quatre</option>
+        </select>
+        copes.<br />
+
+        Després de la festa vull anar a dormir a
+        <select class="mdl" name="night">
+          <option value="hotel" selected>un hotel proper</option>
+          <option value="home">a casa meva</option>
+        </select>
+        amb
+        <select class="mdl" name="transport-out">
+          <option value="walk" selected>els meus peus</option>
+          <option value="car">cotxe</option>
+          <option value="bus">autocar</option>
+          <option value="bike">bicicleta</option>
+        </select>.
+
+
+        <div class="nl-submit-wrap">
+          <button class="nl-submit" type="button">Finalitzar</button>
+        </div>
+        <div class="nl-overlay"></div>
+      </form>
+
+    </script>
+
+    <script id="outro-template" type="text/template">
+      <form id="nl-form" class="nl-form">
+      <p>Moltes gràcies per respondre aquestes preguntes, la vostra opinió és important per nosaltres, si t&rsquo;ha quedat alguna cosa per dir-nos ho pots fer aquí:</p>
+
+      <textarea rows="10"></textarea>
+      <div class="nl-submit-wrap">
+        <button class="nl-submit" type="button">Enviar</button>
+      </div>
+      </form>
+    </script>
+
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/backbone/backbone.js"></script>
+    <script src="bower_components/backbone.localStorage/backbone.localStorage.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>-->
+
+      <!-- build:js({app,.tmp}) scripts/main.js -->
+      <script src="scripts/nlforms.js"></script>
+      <script src="scripts/main.js"></script>
+      <!-- endbuild -->
+</body>
+</html>
