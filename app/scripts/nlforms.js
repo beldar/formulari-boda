@@ -19,7 +19,6 @@
   }
 
   function NLForm( el ) {
-    console.log(el);
     this.el = el;
     this.overlay = this.el.querySelector( '.nl-overlay' );
     this.fields = [];
@@ -148,6 +147,7 @@
       this.form.fldOpen = this.pos;
       var self = this;
       this.fld.className += ' nl-field-open';
+      this.form.el.className += ' nl-form-field-open';
     },
     close : function( opt, idx ) {
       if( !this.open ) {
@@ -156,6 +156,7 @@
       this.open = false;
       this.form.fldOpen = -1;
       this.fld.className = this.fld.className.replace(/\b nl-field-open\b/,'');
+      this.form.el.className = this.form.el.className.replace(/\b nl-form-field-open\b/,'');
 
       if( this.type === 'dropdown' ) {
         if( opt ) {

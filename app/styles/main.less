@@ -18,7 +18,32 @@ body {
 
 a {
   color: #b14943;
-  //text-decoration: none;
+  text-decoration: none;
+
+  &.outbound {
+    color: #2770AF;
+
+    &:hover,
+    &:active {
+      color: #1A4B75;
+      text-decoration: none;
+    }
+
+    &:after {
+      content: "\e164";
+      font-size: 0.3em;
+      font-family: 'Glyphicons Halflings';
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      -webkit-font-smoothing: antialiased;
+      display: inline-block;
+      margin-left: 0.2em;
+      vertical-align: baseline;
+    }
+  }
 }
 
 a:hover,
@@ -55,10 +80,24 @@ a:active {
   }
 
   &.rotateFoldRight {
+    -webkit-transform-origin: 0 50%;
+    transform-origin: 0 50%;
+    -webkit-animation: rotateFoldRight .7s both ease;
+    animation: rotateFoldRight .7s both ease;
+  }
+
+  &.rotateUnfoldRight {
     -webkit-transform-origin: 0% 50%;
     transform-origin: 0% 50%;
     -webkit-animation: rotateUnfoldRight .7s both ease;
     animation: rotateUnfoldRight .7s both ease;
+  }
+
+  &.rotateUnfoldLeft {
+    -webkit-transform-origin: 100% 50%;
+    transform-origin: 100% 50%;
+    -webkit-animation: rotateUnfoldLeft .7s both ease;
+    animation: rotateUnfoldLeft .7s both ease;
   }
 }
 
@@ -69,6 +108,13 @@ a:active {
 @keyframes rotateFoldLeft {
   from { }
   to { opacity: 0; -webkit-transform: translateX(-100%) rotateY(-90deg); transform: translateX(-100%) rotateY(-90deg); }
+}
+
+@-webkit-keyframes rotateUnfoldLeft {
+  from { opacity: 0; -webkit-transform: translateX(-100%) rotateY(-90deg); }
+}
+@keyframes rotateUnfoldLeft {
+  from { opacity: 0; -webkit-transform: translateX(-100%) rotateY(-90deg); transform: translateX(-100%) rotateY(-90deg); }
 }
 
 @-webkit-keyframes rotateFoldRight {

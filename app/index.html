@@ -23,7 +23,7 @@
 
     <div id="outer">
       <div class="container">
-        <div id="content" class="col-xs-12 clearfix"></div>
+        <div id="content" class="clearfix"></div>
       </div>
     </div>
 
@@ -33,7 +33,7 @@
 
         <p>Si has arribat aquí significa que has estat convidat a la boda de l&rsquo;Anna i el Martí, aquesta és la "primera fase" de la nostra web que farem servir per fer-te algunes preguntes de cara a la teva assistència.</p>
         <div class="nl-submit-wrap">
-          <button class="nl-submit" type="button">Començar</button>
+          <button class="nl-submit nl-next" type="button">Començar</button>
         </div>
       </div>
     </script>
@@ -51,7 +51,7 @@
         venir a la vostra boda el dia 1 d&rsquo;Octubre de 2016 i el meu email és:
         <input class="mdl" name="email" type="text" value="" placeholder="usuari@domini.com" data-subline="Per contactar-te sobre la boda"/>
         <div class="nl-submit-wrap">
-          <button class="nl-submit" type="button">Següent</button>
+          <button class="nl-submit nl-next" type="button">Següent</button>
         </div>
         <div class="nl-overlay"></div>
       </form>
@@ -59,7 +59,7 @@
 
     <script id="form-2-template" type="text/template">
       <form id="nl-form" class="nl-form">
-        La celebració serà al restaurant <a title="Web del Btakora" href="http://www.btakora.com/" target="_blank">Btakora</a> a <a title="Google Maps" href="https://goo.gl/maps/e1cju" target="_blank">Canet de Mar</a>.<br/>
+        La celebració serà al restaurant <a class="outbound" title="Web del Btakora" href="http://www.btakora.com/" target="_blank">Btakora</a> a <a class="outbound" title="Google Maps" href="https://goo.gl/maps/e1cju" target="_blank">Canet de Mar</a>.<br/>
         M&rsquo;agradaria poder arribar-hi amb
         <select class="mdl" name="transport-in">
           <option value="car" selected>cotxe</option>
@@ -67,7 +67,8 @@
           <option value="boat">vaixell</option>
         </select>.
         <div class="nl-submit-wrap">
-          <button class="nl-submit" type="button">Següent</button>
+          <button class="nl-submit nl-prev" type="button">Anterior</button>
+          <button class="nl-submit nl-next" type="button">Següent</button>
         </div>
         <div class="nl-overlay"></div>
       </form>
@@ -89,7 +90,8 @@
         alèrgies alimentàries.
 
         <div class="nl-submit-wrap">
-          <button class="nl-submit" type="button">Següent</button>
+          <button class="nl-submit nl-prev" type="button">Anterior</button>
+          <button class="nl-submit nl-next" type="button">Següent</button>
         </div>
         <div class="nl-overlay"></div>
       </form>
@@ -122,7 +124,8 @@
 
 
         <div class="nl-submit-wrap">
-          <button class="nl-submit" type="button">Finalitzar</button>
+          <button class="nl-submit nl-prev" type="button">Anterior</button>
+          <button class="nl-submit nl-next" type="button">Finalitzar</button>
         </div>
         <div class="nl-overlay"></div>
       </form>
@@ -135,7 +138,8 @@
 
       <textarea rows="10"></textarea>
       <div class="nl-submit-wrap">
-        <button class="nl-submit" type="button">Enviar</button>
+        <button class="nl-submit nl-prev" type="button">Anterior</button>
+        <button class="nl-submit nl-next" type="button">Enviar</button>
       </div>
       </form>
     </script>

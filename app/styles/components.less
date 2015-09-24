@@ -18,6 +18,24 @@
     margin: 0.3em auto 0 auto;
     font-size: 4em;
     line-height: 1.5;
+    transition: text-shadow 0.5s, color 0.5s;
+
+    &.nl-form-field-open {
+      text-shadow: 0px 0px 6px #fff;
+      color: rgba(255, 255, 255, 0);
+
+      & > div {
+        filter: blur(2px);
+        -webkit-filter: blur(2px);
+      }
+    }
+
+    & > div {
+      text-shadow: none;
+      color: inherit;
+      transition: filter 0.5s;
+      -webkit-transition: -webkit-filter 0.5s;
+    }
 }
 
 .nl-form ul {
@@ -242,6 +260,20 @@ input:focus::-ms-input-placeholder {
     background: #69B1A9;
 }
 
+.nl-next {
+  padding: 0 0 0 1em !important;
+
+  &:before {
+    content: "\e080";
+    float: right;
+    margin: 0 0 0 0.8em;
+  }
+}
+
+.nl-submit.nl-prev:before {
+    content: "\e079";
+}
+
 .no-touch .nl-form .nl-submit:hover,
 .no-touch .nl-form .nl-submit:active {
     background: #69B1A9;
@@ -258,7 +290,7 @@ input:focus::-ms-input-placeholder {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0);
     opacity: 0;
     z-index: 9999;
     visibility: hidden;
@@ -273,6 +305,12 @@ input:focus::-ms-input-placeholder {
     -webkit-transition-delay: 0s;
     -moz-transition-delay: 0s;
     transition-delay: 0s;
+}
+
+.nl-field.nl-field-open{
+    -webkit-filter: none !important;
+    filter: none !important;
+    text-shadow: none !important;
 }
 
 @media screen and (max-width: 45em) {
