@@ -1,16 +1,5 @@
 //main: main.less
-
-
-@font-face {
-    font-family: 'nlicons';
-    src:url('../fonts/nlicons/nlicons.eot');
-    src:url('../fonts/nlicons/nlicons.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/nlicons/nlicons.woff') format('woff'),
-        url('../fonts/nlicons/nlicons.ttf') format('truetype'),
-        url('../fonts/nlicons/nlicons.svg#nlicons') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
+@import "variables";
 
 /* general style for the form */
 .nl-form {
@@ -21,20 +10,33 @@
     transition: text-shadow 0.5s, color 0.5s;
 
     &.nl-form-field-open {
-      text-shadow: 0px 0px 6px #fff;
+      text-shadow: 0px 0px 6px @maintextcolor;
       color: rgba(255, 255, 255, 0);
 
-      & > div {
+      .outbound {
+        text-shadow: none;
+        color: @outboundcolor;
+      }
+
+      & > div, & > a {
         filter: blur(2px);
         -webkit-filter: blur(2px);
       }
     }
 
-    & > div {
+    & > div, & > a {
       text-shadow: none;
       color: inherit;
       transition: filter 0.5s;
       -webkit-transition: -webkit-filter 0.5s;
+
+      &.outbound {
+        color: @outboundcolor;
+
+        &:hover {
+          color: @ountboundhover;
+        }
+      }
     }
 }
 
@@ -92,6 +94,7 @@
     position: absolute;
     visibility: hidden;
     background: #76C3BD;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.5);
     left: -0.5em;
     top: 50%;
     font-size: 80%;

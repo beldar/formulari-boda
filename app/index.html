@@ -41,15 +41,15 @@
     <script id="form-1-template" type="text/template">
       <form id="nl-form" class="nl-form">
         Em dic
-        <input class="mdl" name="name" type="text" value="" placeholder="Nom" data-subline="El teu nom"/>
-        <input class="mdl" name="surname" type="text" value="" placeholder="Cognom" data-subline="Només el primer cognom"/>
+        <input class="mdl" name="name" type="text" value="<%=name%>" placeholder="Nom" data-subline="El teu nom"/>
+        <input class="mdl" name="surname" type="text" value="<%=surname%>" placeholder="Cognom" data-subline="Només el primer cognom"/>
         , confirmo que
         <select class="mdl" name="rsvp">
           <option value="yes" selected>puc</option>
           <option value="no">no puc</option>
         </select>
         venir a la vostra boda el dia 1 d&rsquo;Octubre de 2016 i el meu email és:
-        <input class="mdl" name="email" type="text" value="" placeholder="usuari@domini.com" data-subline="Per contactar-te sobre la boda"/>
+        <input class="mdl" value="<%=email%>" name="email" type="text" value="" placeholder="usuari@domini.com" data-subline="Per contactar-te sobre la boda"/>
         <div class="nl-submit-wrap">
           <button class="nl-submit nl-next" type="button">Següent</button>
         </div>
@@ -61,7 +61,7 @@
       <form id="nl-form" class="nl-form">
         La celebració serà al restaurant <a class="outbound" title="Web del Btakora" href="http://www.btakora.com/" target="_blank">Btakora</a> a <a class="outbound" title="Google Maps" href="https://goo.gl/maps/e1cju" target="_blank">Canet de Mar</a>.<br/>
         M&rsquo;agradaria poder arribar-hi amb
-        <select class="mdl" name="transport-in">
+        <select class="mdl" name="transportIn">
           <option value="car" selected>cotxe</option>
           <option value="bus">autocar</option>
           <option value="boat">vaixell</option>
@@ -115,7 +115,7 @@
           <option value="home">a casa meva</option>
         </select>
         amb
-        <select class="mdl" name="transport-out">
+        <select class="mdl" name="transportOut">
           <option value="walk" selected>els meus peus</option>
           <option value="car">cotxe</option>
           <option value="bus">autocar</option>
@@ -125,7 +125,7 @@
 
         <div class="nl-submit-wrap">
           <button class="nl-submit nl-prev" type="button">Anterior</button>
-          <button class="nl-submit nl-next" type="button">Finalitzar</button>
+          <button class="nl-submit nl-next" type="button">Següent</button>
         </div>
         <div class="nl-overlay"></div>
       </form>
@@ -133,10 +133,10 @@
     </script>
 
     <script id="outro-template" type="text/template">
-      <form id="nl-form" class="nl-form">
+      <form id="outro" class="nl-form">
       <p>Moltes gràcies per respondre aquestes preguntes, la vostra opinió és important per nosaltres, si t&rsquo;ha quedat alguna cosa per dir-nos ho pots fer aquí:</p>
 
-      <textarea rows="10"></textarea>
+      <textarea name="comments" cols="10" rows="5"></textarea>
       <div class="nl-submit-wrap">
         <button class="nl-submit nl-prev" type="button">Anterior</button>
         <button class="nl-submit nl-next" type="button">Enviar</button>

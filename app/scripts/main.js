@@ -7,7 +7,19 @@ Boda.Models.User = Backbone.Model.extend({
   id: 1,
   localStorage: new Backbone.LocalStorage('BodaAM'),
   defaults: {
-
+    id: 1,
+    name: '',
+    surname: '',
+    rsvp: 'yes',
+    email: '',
+    transportIn: 'car',
+    sushi: 'yes',
+    alergies: 'no',
+    //alergiesDesc: '',
+    copes: '0',
+    night: 'hotel',
+    transportOut: 'walk',
+    comments: ''
   }
 });
 
@@ -19,11 +31,23 @@ Boda.Views.AppView = Backbone.View.extend({
   },
 
   initialize: function() {
-    this.model = new Boda.Models.User();
+    var _this = this;
 
     this.steps = ['Intro', 'Form1', 'Form2', 'Form3', 'Form4', 'Outro'];
     this.current = 0;
-    this.renderStep();
+
+    this.model = new Boda.Models.User();
+    this.model.fetch({
+      success: function(e) {
+        console.log('Success on fetch', e);
+        _this.renderStep();
+      },
+
+      error: function(e) {
+        console.log('Error on fetch', e);
+        _this.renderStep();
+      }
+    })
 
   },
 
@@ -101,6 +125,10 @@ Boda.Views.BasePage = Backbone.View.extend({
 Boda.Views.FormView = Boda.Views.BasePage.extend({
 
   afterRender: function() {
+    var _this = this;
+    this.$el.find('select').each(function(){
+      $(this).val(_this.model.get($(this).attr('name')));
+    });
     this.nlform = new NLForm( document.getElementById( 'nl-form' ) );
   },
 
@@ -110,7 +138,7 @@ Boda.Views.FormView = Boda.Views.BasePage.extend({
       _this.model.set($(this).attr('name'), $(this).val());
     });
 
-    console.log(this.model.toJSON());
+    this.model.save();
   },
 
   nextStep: function() {
