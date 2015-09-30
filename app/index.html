@@ -2,7 +2,7 @@
 <html class="no-js" lang="">
   <head>
     <meta charset="utf-8">
-    <title>boda nlform</title>
+    <title>Boda Anna+Martí</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="shortcut icon" href="/favicon.ico">
@@ -26,12 +26,15 @@
         <div id="content" class="clearfix"></div>
       </div>
     </div>
+    <div id="loading">
+      <h1>Enviant...</h1>
+    </div>
 
     <script id="intro-template" type="text/template">
       <div id="intro" class="nl-form">
         <h1>Benvingut/da!</h1>
 
-        <p>Si has arribat aquí significa que has estat convidat a la boda de l&rsquo;Anna i el Martí, aquesta és la "primera fase" de la nostra web que farem servir per fer-te algunes preguntes de cara a la teva assistència.</p>
+        <p>Si has arribat aquí significa que has estat convidat a la boda de l&rsquo;Anna i el Martí, aquesta és la "primera fase" de la nostra web que farem servir per fer-te algunes preguntes de cara a la teva assistència, clica el text marcat en vermell per canviar el significat.</p>
         <div class="nl-submit-wrap">
           <button class="nl-submit nl-next" type="button">Començar</button>
         </div>
@@ -88,6 +91,10 @@
           <option value="yes">que tinc</option>
         </select>
         alèrgies alimentàries.
+        <div id="alergiesDesc" <%=(alergies === 'yes' ? 'class="show"' : '')%>>
+          <p>Quines?</p>
+          <textarea rows="2" name="alergiesDesc" class="mdl"><%=alergiesDesc%></textarea>
+        </div>
 
         <div class="nl-submit-wrap">
           <button class="nl-submit nl-prev" type="button">Anterior</button>
@@ -136,7 +143,7 @@
       <form id="outro" class="nl-form">
       <p>Moltes gràcies per respondre aquestes preguntes, la vostra opinió és important per nosaltres, si t&rsquo;ha quedat alguna cosa per dir-nos ho pots fer aquí:</p>
 
-      <textarea name="comments" cols="10" rows="5"></textarea>
+      <textarea name="comments" cols="10" rows="5"><%=comments%></textarea>
       <div class="nl-submit-wrap">
         <button class="nl-submit nl-prev" type="button">Anterior</button>
         <button class="nl-submit nl-next" type="button">Enviar</button>

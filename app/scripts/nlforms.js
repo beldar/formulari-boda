@@ -169,6 +169,7 @@
           this.selectedIdx = idx;
           // update original select element´s value
           this.elOriginal.value = this.elOriginal.children[ this.selectedIdx ].value;
+          $(this.elOriginal).trigger('change');
         }
       }
       else if( this.type === 'input' ) {

@@ -15,7 +15,7 @@ Boda.Models.User = Backbone.Model.extend({
     transportIn: 'car',
     sushi: 'yes',
     alergies: 'no',
-    //alergiesDesc: '',
+    alergiesDesc: '',
     copes: '0',
     night: 'hotel',
     transportOut: 'walk',
@@ -60,8 +60,6 @@ Boda.Views.AppView = Backbone.View.extend({
 
     this.currentStep = this.steps[this.current];
 
-    console.log('Current step: '+this.current);
-
     if (this.current !== 0) {
       this.$el.removeClass(allClasses).addClass(outClass);
     }
@@ -80,16 +78,12 @@ Boda.Views.AppView = Backbone.View.extend({
   },
 
   nextStep: function() {
-    console.log('Next, current: '+this.current);
     this.current = this.current < this.steps.length - 1 ?  this.current + 1 : this.current;
-    console.log('-> '+this.current);
     this.renderStep('forward');
   },
 
   prevStep: function() {
-    console.log('Prev, current: '+this.current, this.current > 0);
     this.current = this.current > 0 ? this.current - 1 : 0;
-    console.log('-> '+this.current);
     this.renderStep('backward');
   }
 });
@@ -137,7 +131,6 @@ Boda.Views.FormView = Boda.Views.BasePage.extend({
     this.$el.find('.mdl').each(function(){
       _this.model.set($(this).attr('name'), $(this).val());
     });
-
     this.model.save();
   },
 
@@ -159,7 +152,48 @@ Boda.Views.IntroView = Boda.Views.BasePage.extend({
 
 Boda.Views.Form1View = Boda.Views.FormView.extend({
   el: '#form-1',
-  template:  _.template($('#form-1-template').html().trim())
+  template:  _.template($('#form-1-template').html().trim()),
+
+  nextStep: function() {
+    if (this.save()) {
+      this.parent.nextStep();
+    }
+  },
+
+  save: function() {
+    var _this = this,
+        notFilled  = [];
+
+    this.$el.find('input.mdl').each(function() {
+      if ($(this).val() === '') {
+        var nom = '';
+        switch ($(this).attr('name')) {
+          case 'name':
+            nom = 'Nom';
+            break;
+          case 'surname':
+            nom = 'Cognom';
+            break;
+          case 'email':
+            nom = 'Email';
+            break;
+        }
+        notFilled.push(nom);
+      }
+    });
+
+    if (notFilled.length) {
+      console.log(notFilled);
+      alert('Has d\'omplir els següents camps: '+notFilled.join(', '));
+      return false;
+    } else {
+      this.$el.find('.mdl').each(function(){
+        _this.model.set($(this).attr('name'), $(this).val());
+      });
+      this.model.save();
+      return true;
+    }
+  }
 });
 
 Boda.Views.Form2View = Boda.Views.FormView.extend({
@@ -169,7 +203,23 @@ Boda.Views.Form2View = Boda.Views.FormView.extend({
 
 Boda.Views.Form3View = Boda.Views.FormView.extend({
   el: '#form-3',
-  template:  _.template($('#form-3-template').html().trim())
+  template:  _.template($('#form-3-template').html().trim()),
+  events: {
+    'click .nl-next': 'nextStep',
+    'click .nl-prev': 'prevStep',
+    'change select[name=alergies]' : 'alergies'
+  },
+  alergies: function(e) {
+    var $target = $(e.target),
+        aDesc = this.$el.find('#alergiesDesc');
+
+    if ($target.val() === 'yes') {
+      aDesc.addClass('show');
+    } else {
+      aDesc.removeClass('show');
+      aDesc.find('textarea').val('');
+    }
+  }
 });
 
 Boda.Views.Form4View = Boda.Views.FormView.extend({
@@ -179,9 +229,19 @@ Boda.Views.Form4View = Boda.Views.FormView.extend({
 
 Boda.Views.OutroView = Boda.Views.BasePage.extend({
   el: '#outro',
-  template:  _.template($('#outro-template').html().trim())
+  template:  _.template($('#outro-template').html().trim()),
+  nextStep: function() {
+    var _this = this;
+    this.model.set('comments', $('textarea').val());
+    $('#loading').addClass('show');
+    console.log('Submit!', _this.model.toJSON());
+    setTimeout(function(){
+      $('#loading').removeClass('show');
+      _this.$el.html('<h1 style="text-align:center">Les teves respostes s\'han enviat correctament, gràcies!</h1>');
+    }, 2000);
+  }
 });
 
 $(function(){
-  var App = new Boda.Views.AppView();
+  Boda.App = new Boda.Views.AppView();
 });
