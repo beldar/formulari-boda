@@ -235,10 +235,22 @@ Boda.Views.OutroView = Boda.Views.BasePage.extend({
     this.model.set('comments', $('textarea').val());
     $('#loading').addClass('show');
     console.log('Submit!', _this.model.toJSON());
-    setTimeout(function(){
+
+    $.ajax('http://sheetsu.com/apis/cc8627c5',
+    {
+      method: 'POST',
+      dataType: 'json',
+      data: this.model.toJSON(),
+      crossDomain: true
+    })
+    .done(function(r){
+      console.log('Done', r);
       $('#loading').removeClass('show');
       _this.$el.html('<h1 style="text-align:center">Les teves respostes s\'han enviat correctament, gràcies!</h1>');
-    }, 2000);
+    })
+    .error(function(e){
+      console.log('Error!', e);
+    });
   }
 });
 
