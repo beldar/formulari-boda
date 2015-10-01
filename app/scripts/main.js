@@ -13,12 +13,15 @@ Boda.Models.User = Backbone.Model.extend({
     rsvp: 'yes',
     email: '',
     transportIn: 'car',
-    sushi: 'yes',
+    sushi: 'maybe',
+    vegetarian: 'no',
     alergies: 'no',
     alergiesDesc: '',
     copes: '0',
-    night: 'hotel',
-    transportOut: 'walk',
+    night: 'home',
+    room: '2pax',
+    shared: '',
+    transportOut: 'car',
     comments: ''
   }
 });
@@ -214,9 +217,9 @@ Boda.Views.Form3View = Boda.Views.FormView.extend({
         aDesc = this.$el.find('#alergiesDesc');
 
     if ($target.val() === 'yes') {
-      aDesc.addClass('show');
+      aDesc.addClass('showIt');
     } else {
-      aDesc.removeClass('show');
+      aDesc.removeClass('showIt');
       aDesc.find('textarea').val('');
     }
   }
@@ -224,7 +227,24 @@ Boda.Views.Form3View = Boda.Views.FormView.extend({
 
 Boda.Views.Form4View = Boda.Views.FormView.extend({
   el: '#form-4',
-  template:  _.template($('#form-4-template').html().trim())
+  template:  _.template($('#form-4-template').html().trim()),
+  events: {
+    'click .nl-next': 'nextStep',
+    'click .nl-prev': 'prevStep',
+    'change select[name=night]' : 'hotel'
+  },
+  hotel: function(e) {
+    var $target = $(e.target),
+        hotel = this.$el.find('#hotel-detail');
+
+    if ($target.val() === 'hotel') {
+      hotel.addClass('showIt');
+    } else {
+      hotel.removeClass('showIt');
+      this.model.set('room', 'none');
+    }
+  }
+
 });
 
 Boda.Views.OutroView = Boda.Views.BasePage.extend({

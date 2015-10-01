@@ -146,10 +146,18 @@ textarea {
   height: 0;
   transition: visibility 0s, opacity 0.5s, height 0.5s;
 
-  &.show {
+  &.showIt {
     visibility: visible;
     opacity: 1;
     height: auto;
+  }
+}
+
+#hotel-detail {
+  display: none;
+
+  &.showIt {
+    display: initial;
   }
 }
 
