@@ -1,4 +1,4 @@
-<!DOCTYPE html> <html class=no-js> <head> <meta charset=utf-8> <title>Boda Anna+Martí</title> <meta name=description content=""> <meta name=viewport content="width=device-width"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel=stylesheet href=styles/main.b38d3376.css> <script src=scripts/vendor/modernizr.4038d71f.js></script>  <body> <!--[if lt IE 10]>
+<!DOCTYPE html> <html class=no-js> <head> <meta charset=utf-8> <title>Boda Anna+Martí</title> <meta name=description content=""> <meta name=viewport content="width=device-width"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel=stylesheet href=styles/main.b6fcc5de.css> <script src=scripts/vendor/modernizr.4038d71f.js></script>  <body> <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]--> <div id=outer> <div class=container> <div id=content class=clearfix></div> </div> </div> <div id=loading> <h1>Enviant...</h1> </div> <script id=intro-template type=text/template><div id="intro" class="nl-form">
         <h1>Benvingut/da!</h1>
@@ -27,6 +27,7 @@
         M&rsquo;agradaria poder arribar-hi amb
         <select class="mdl" name="transportIn">
           <option value="car" selected>cotxe</option>
+          <option value="train">tren</option>
           <option value="bus">autocar</option>
           <option value="boat">vaixell</option>
         </select>.
@@ -38,17 +39,21 @@
       </form></script> <script id=form-3-template type=text/template><form id="nl-form" class="nl-form">
         En quant al menjar, us vull informar, que el sushi
         <select class="mdl" name="sushi">
-          <option value="yes" selected>m&rsquo;agrada molt</option>
-          <option value="maybe">ni fu ni fa</option>
+          <option value="maybe" selected>ni fu ni fa</option>
+          <option value="yes">m&rsquo;agrada molt</option>
           <option value="no">no m&rsquo;agrada gens</option>
         </select>,
+        <select class="mdl" name="vegetarian">
+          <option value="no" selected>no sóc</option>
+          <option value="yes">sóc</option>
+        </select> vegeterià
         i
         <select class="mdl" name="alergies">
           <option value="no" selected>no tinc</option>
           <option value="yes">que tinc</option>
         </select>
         alèrgies alimentàries.
-        <div id="alergiesDesc" <%=(alergies === 'yes' ? 'class="show"' : '')%>>
+        <div id="alergiesDesc" <%=(alergies === 'yes' ? 'class="showIt"' : '')%>>
           <p>Quines?</p>
           <textarea rows="2" name="alergiesDesc" class="mdl"><%=alergiesDesc%></textarea>
         </div>
@@ -59,7 +64,7 @@
         </div>
         <div class="nl-overlay"></div>
       </form></script> <script id=form-4-template type=text/template><form id="nl-form" class="nl-form">
-        De cara a la festa vull poder beure
+        De cara a la festa (després del sopar) vull poder beure
         <select class="mdl" name="copes">
           <option value="0" selected>cap</option>
           <option value="1">una</option>
@@ -71,13 +76,24 @@
 
         Després de la festa vull anar a dormir a
         <select class="mdl" name="night">
-          <option value="hotel" selected>un hotel proper</option>
-          <option value="home">a casa meva</option>
+          <option value="home" selected>a casa meva</option>
+          <option value="hotel">un hotel proper</option>
         </select>
-        amb
+        <span id="hotel-detail" <%=(night === 'hotel' ? 'class="showIt"' : '')%>>
+          en una habitació
+          <select class="mdl" name="room">
+            <option value="1pax">individual (1pax)</option>
+            <option value="2pax" selected>doble (2pax)</option>
+            <option value="3pax">triple (3pax)</option>
+            <option value="4pax">familiar (4pax)</option>
+          </select>
+           que comparteixo amb <input class="mdl" name="shared" type="text" value="<%=shared%>" placeholder="ningú" data-subline="Noms de persones amb qui comparteixes"/>
+        </span>
+        i arribar-hi amb
         <select class="mdl" name="transportOut">
-          <option value="walk" selected>els meus peus</option>
-          <option value="car">cotxe</option>
+          <option value="car" selected>cotxe</option>
+          <option value="walk">els meus peus</option>
+          <option value="train">tren</option>
           <option value="bus">autocar</option>
           <option value="bike">bicicleta</option>
         </select>.
@@ -104,4 +120,4 @@
       e.src='//www.google-analytics.com/analytics.js';
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
       ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>--> <script src=scripts/main.f28a6663.js></script>  
+    </script>--> <script src=scripts/main.913982ae.js></script>  
