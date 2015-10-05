@@ -256,7 +256,7 @@ Boda.Views.OutroView = Boda.Views.BasePage.extend({
     $('#loading').addClass('show');
     console.log('Submit!', _this.model.toJSON());
 
-    $.ajax('http://sheetsu.com/apis/cc8627c5',
+    $.ajax('https://sheetsu.com/apis/cc8627c5',
     {
       method: 'POST',
       dataType: 'json',
