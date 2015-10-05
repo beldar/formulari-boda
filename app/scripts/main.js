@@ -270,6 +270,8 @@ Boda.Views.OutroView = Boda.Views.BasePage.extend({
     })
     .error(function(e){
       console.log('Error!', e);
+      $('#loading').removeClass('show');
+      _this.$el.html('<h1 style="text-align:center">Sembla que hi ha hagut algun problema al enviar les dades, prova-ho més tard! (O parla amb l\'Anna)</h1>');
     });
   }
 });
